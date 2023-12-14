@@ -28,10 +28,3 @@ jobs:
           name: Android.apk
           path: app/build/outputs/apk/debug/app-debug.apk
 
-      - name: Distribute to filebase app
-        uses: nickwph/firebase-app-distribution-action@v1.2.1
-        with:
-          appId: ${{secrets.FIREBASE_APP_ID}}
-          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-        groups: testers
-        file: app/build/outputs/apk/debug/app-debug.apk

@@ -1,0 +1,33 @@
+name: Deploy to firebase
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_notes:
+        type: string
+        required: true
+        default: "Manual debug build"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.0.0
+        with:
+          java-version: '17'
+          distribution: adopt
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: upload artifact to Firebase App Distribution
+        uses: nickwph/firebase-app-distribution-action@v1.2.1
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID}}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          groups: testers
+          file: app/build/outputs/apk/debug/app-debug.apk
