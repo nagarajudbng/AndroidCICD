@@ -2,12 +2,12 @@ name: Deploy to firebase
 
 on:
   workflow_dispatch:
-    # inputs:
-    #   release_notes:
-    #     type: string
-    #     required: true
-    #     default: "Manual debug build"
-    #     description: 'Release Notes'
+    inputs:
+      release_notes:
+        type: string
+        required: true
+        default: "Manual debug build"
+        description: 'Release Notes'
         
 jobs:
   build:
@@ -26,7 +26,7 @@ jobs:
         run: ./gradlew build
 
       - name: upload artifact to Firebase App Distribution
-        uses: nickwph/firebase-app-distribution-action@v1.2.1
+        uses: burhankhanzada/firebase_app_distribution_github_action@v0.2.1
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
