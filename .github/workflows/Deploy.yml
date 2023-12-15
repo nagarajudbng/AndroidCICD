@@ -7,7 +7,8 @@ on:
         type: string
         required: true
         default: "Manual debug build"
-
+        description: 'Release Notes'
+        
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,3 +32,4 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
           file: app/build/outputs/apk/debug/app-debug.apk
+          releaseNotes: ${{ inputs.release_notes }}
