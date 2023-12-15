@@ -2,12 +2,12 @@ name: Deploy to firebase
 
 on:
   workflow_dispatch:
-    inputs:
-      release_notes:
-        type: string
-        required: true
-        default: "Manual debug build"
-        description: 'Release Notes'
+    # inputs:
+    #   release_notes:
+    #     type: string
+    #     required: true
+    #     default: "Manual debug build"
+    #     description: 'Release Notes'
         
 jobs:
   build:
@@ -32,4 +32,4 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
           file: app/build/outputs/apk/debug/app-debug.apk
-          releaseNotes: ${{ inputs.release_notes }}
+          
