@@ -26,7 +26,7 @@ jobs:
         run: ./gradlew build
 
       - name: upload artifact to Firebase App Distribution
-        uses: burhankhanzada/firebase_app_distribution_github_action@v0.2.1
+        uses: nickwph/firebase-app-distribution-action@v1.2.1
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
