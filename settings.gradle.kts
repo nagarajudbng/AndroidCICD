@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TastyRecipesApp"
+rootProject.name = "CICDTastyRecipesApp"
 include(":app")
  
